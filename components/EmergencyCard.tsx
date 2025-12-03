@@ -126,14 +126,23 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
              </div>
              <h3 className="text-xl font-bold">{name}</h3>
           </div>
-          <button 
-             onClick={handleNumberClick}
-             className="text-2xl font-black tracking-widest text-right hover:opacity-75 transition-opacity underline decoration-dotted decoration-2 underline-offset-4 cursor-pointer"
-             dir="ltr"
-             title={`${UI_TRANSLATIONS.callNow[language]} ${contact.number}`}
-          >
-             {contact.number}
-          </button>
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={handleNumberClick}
+              className="text-2xl font-black tracking-widest text-right hover:opacity-75 transition-opacity underline decoration-dotted decoration-2 underline-offset-4 cursor-pointer"
+              dir="ltr"
+              title={`${UI_TRANSLATIONS.callNow[language]} ${contact.number}`}
+            >
+              {contact.number}
+            </button>
+            <button
+              onClick={handleNumberClick}
+              className="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors active:scale-95"
+              aria-label={`${UI_TRANSLATIONS.callNow[language]} ${contact.number}`}
+            >
+              <Phone size={20} className="fill-current opacity-80" />
+            </button>
+          </div>
         </div>
         <p className="text-sm opacity-90 font-medium mb-4 pr-1 leading-tight">
           {description}
