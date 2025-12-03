@@ -14,9 +14,9 @@ const IconMap: Record<string, React.ElementType> = {
 };
 
 export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language }) => {
-  const [tooltipState, setTooltipState] = useState<'hidden' | 'visible' | 'exiting'>('hidden');
+  const [showTooltip, setShowTooltip] = useState(false);
   const [canShare, setCanShare] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const timerRef = useRef<any>(null);
 
   useEffect(() => {
     // Check if Web Share API is supported and context is secure
@@ -55,19 +55,14 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
   const handleCopy = () => {
     navigator.clipboard.writeText(`${name}: ${contact.number}`);
     
+    setShowTooltip(true);
+    
     // Clear any pending timers to handle rapid clicks
     if (timerRef.current) clearTimeout(timerRef.current);
 
-    setTooltipState('visible');
-    
-    // Schedule exit animation
+    // Schedule exit
     timerRef.current = setTimeout(() => {
-      setTooltipState('exiting');
-      
-      // Schedule removal from DOM after animation completes
-      timerRef.current = setTimeout(() => {
-        setTooltipState('hidden');
-      }, 400); // Matches CSS animation duration
+      setShowTooltip(false);
     }, 2000);
   };
 
@@ -112,7 +107,7 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
 
   const cardStyle = getColors(contact.colorClass);
   const btnStyle = getButtonColor(contact.colorClass);
-  const isCopied = tooltipState !== 'hidden';
+  const isCopied = showTooltip;
 
   return (
     <div className={`rounded-xl border-2 p-4 transition-all duration-200 shadow-sm hover:shadow-md flex flex-col justify-between h-full animate-fade-in ${cardStyle}`}>
@@ -141,12 +136,12 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
         </a>
         
         <div className="relative">
-          {tooltipState !== 'hidden' && (
-            <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold rounded-lg shadow-xl whitespace-nowrap z-20 pointer-events-none ${tooltipState === 'exiting' ? 'animate-fade-out' : 'animate-fade-in'}`}>
-              {UI_TRANSLATIONS.numberCopied[language]}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
-            </div>
-          )}
+          <div 
+            className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold rounded-lg shadow-xl whitespace-nowrap z-20 pointer-events-none transition-all duration-300 ease-out origin-bottom ${showTooltip ? 'opacity-100 transform translate-y-0 scale-100' : 'opacity-0 transform translate-y-2 scale-95'}`}
+          >
+            {UI_TRANSLATIONS.numberCopied[language]}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+          </div>
           <button 
             onClick={handleAction}
             className={`h-full p-3 rounded-lg border transition-all duration-200 active:scale-95 min-w-[3.5rem] flex items-center justify-center
