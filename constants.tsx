@@ -51,6 +51,11 @@ export const UI_TRANSLATIONS: TranslationResource = {
     en: 'Public service. In case of immediate life danger dial 100 or 101.',
     ru: 'Общественный сервис. В случае опасности для жизни звоните 100 или 101.'
   },
+  sendFeedback: {
+    he: 'שלח משוב',
+    en: 'Send Feedback',
+    ru: 'Отправить отзыв'
+  },
   all: {
     he: 'הכל',
     en: 'All',
@@ -85,7 +90,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד חירום משטרה', en: 'Police Emergency Hotline', ru: 'Экстренный вызов полиции' },
     category: Category.EMERGENCY,
     colorClass: 'blue',
-    iconName: 'Shield'
+    iconName: 'Shield',
+    keywords: ['גנב', 'פריצה', 'אלימות', 'תאונה', 'thief', 'robbery', 'violence', 'accident', 'вор', 'кража', 'насилие', 'полиция']
   },
   {
     id: '101',
@@ -94,7 +100,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד חירום רפואי ואמבולנס', en: 'Medical Emergency & Ambulance', ru: 'Скорая медицинская помощь' },
     category: Category.EMERGENCY,
     colorClass: 'red',
-    iconName: 'Ambulance'
+    iconName: 'Ambulance',
+    keywords: ['רופא', 'חולה', 'פצוע', 'לב', 'החייאה', 'doctor', 'sick', 'injured', 'heart', 'cpr', 'врач', 'больной', 'раненый', 'сердце']
   },
   {
     id: '102',
@@ -103,7 +110,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד חירום לשריפות וחילוץ', en: 'Fire and Rescue Services', ru: 'Пожары и спасательные работы' },
     category: Category.EMERGENCY,
     colorClass: 'orange',
-    iconName: 'Flame'
+    iconName: 'Flame',
+    keywords: ['שריפה', 'אש', 'עשן', 'לכוד', 'fire', 'smoke', 'trapped', 'пожар', 'дым', 'огонь']
   },
   {
     id: '103',
@@ -112,7 +120,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'דיווח על תקלות והפסקות חשמל', en: 'Power Outages & Faults', ru: 'Сбои электроснабжения' },
     category: Category.UTILITY,
     colorClass: 'yellow',
-    iconName: 'Zap'
+    iconName: 'Zap',
+    keywords: ['חוטים', 'עמוד', 'תקלה', 'wire', 'pole', 'outage', 'провод', 'столб', 'light', 'אור']
   },
   {
     id: '104',
@@ -121,7 +130,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מידע והנחיות התגוננות אזרחית', en: 'Civil Defense Guidelines', ru: 'Инструкции по гражданской обороне' },
     category: Category.SECURITY,
     colorClass: 'orange',
-    iconName: 'Siren'
+    iconName: 'Siren',
+    keywords: ['טיל', 'אזעקה', 'מלחמה', 'רעידת אדמה', 'missile', 'alarm', 'war', 'earthquake', 'ракета', 'сирена', 'война', 'землетрясение']
   },
   {
     id: '104-health',
@@ -130,7 +140,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'תמיכה וסיוע נפשי במצבי חירום', en: 'Mental health support in emergencies', ru: 'Психологическая поддержка в ЧС' },
     category: Category.HEALTH,
     colorClass: 'orange',
-    iconName: 'HeartHandshake'
+    iconName: 'HeartHandshake',
+    keywords: ['חרדה', 'פחד', 'לחץ', 'anxiety', 'fear', 'stress', 'страх', 'стресс']
   },
   {
     id: '105',
@@ -139,7 +150,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'הגנה על ילדים ברשת', en: 'Child Online Protection', ru: 'Защита детей в интернете' },
     category: Category.SECURITY,
     colorClass: 'purple',
-    iconName: 'ShieldAlert'
+    iconName: 'ShieldAlert',
+    keywords: ['בריונות', 'חרם', 'shaming', 'bullying', 'буллинг', 'internet', 'אינטרנט']
   },
   {
     id: '106',
@@ -148,7 +160,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'דיווח על מפגעים עירוניים', en: 'Municipal Hazards Reporting', ru: 'Отчетность о городских проблемах' },
     category: Category.UTILITY,
     colorClass: 'green',
-    iconName: 'Building2'
+    iconName: 'Building2',
+    keywords: ['זבל', 'בור', 'ביוב', 'trash', 'pothole', 'sewage', 'мусор', 'яма', 'канализация', 'city', 'עירייה']
   },
   {
     id: '112',
@@ -157,7 +170,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'חיוג ללא קליטה/SIM', en: 'Emergency from any phone/No SIM', ru: 'Вызов без SIM-карты' },
     category: Category.EMERGENCY,
     colorClass: 'slate',
-    iconName: 'PhoneCall'
+    iconName: 'PhoneCall',
+    keywords: ['sos', 'sim', 'no service', 'אין קליטה']
   },
   {
     id: '118',
@@ -166,7 +180,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מידע ושירותים חברתיים', en: 'Social Services Info', ru: 'Социальные услуги' },
     category: Category.WELFARE,
     colorClass: 'teal',
-    iconName: 'HeartHandshake'
+    iconName: 'HeartHandshake',
+    keywords: ['social', 'help', 'עזרה', 'סיוע', 'социальный']
   },
   {
     id: '119',
@@ -175,7 +190,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'דיווח על מתקפות סייבר', en: 'Cyber Attack Reporting', ru: 'Сообщить о кибератаке' },
     category: Category.SECURITY,
     colorClass: 'indigo',
-    iconName: 'Lock'
+    iconName: 'Lock',
+    keywords: ['hack', 'computer', 'virus', 'מחשב', 'וירוס', 'פריצה', 'хакер', 'вирус']
   },
   {
     id: '2700',
@@ -184,7 +200,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד שירות וזימון תורים', en: 'Service & Appointments', ru: 'Обслуживание и очереди' },
     category: Category.HEALTH,
     colorClass: 'teal',
-    iconName: 'Stethoscope'
+    iconName: 'Stethoscope',
+    keywords: ['clinic', 'doctor', 'מרפאה', 'רופא', 'клиника', 'врач']
   },
   {
     id: '3555',
@@ -193,7 +210,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד שירות וזימון תורים', en: 'Service & Appointments', ru: 'Обслуживание и очереди' },
     category: Category.HEALTH,
     colorClass: 'blue',
-    iconName: 'Activity'
+    iconName: 'Activity',
+    keywords: ['clinic', 'doctor', 'מרפאה', 'רופא', 'клиника', 'врач']
   },
   {
     id: '3833',
@@ -202,7 +220,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד שירות וזימון תורים', en: 'Service & Appointments', ru: 'Обслуживание и очереди' },
     category: Category.HEALTH,
     colorClass: 'orange',
-    iconName: 'Heart'
+    iconName: 'Heart',
+    keywords: ['clinic', 'doctor', 'מרפאה', 'רופא', 'клиника', 'врач']
   },
   {
     id: '507',
@@ -211,7 +230,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מוקד שירות וזימון תורים', en: 'Service & Appointments', ru: 'Обслуживание и очереди' },
     category: Category.HEALTH,
     colorClass: 'blue',
-    iconName: 'Stethoscope'
+    iconName: 'Stethoscope',
+    keywords: ['clinic', 'doctor', 'מרפאה', 'רופא', 'клиника', 'врач']
   },
   {
     id: '1220',
@@ -220,7 +240,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'איתור וחילוץ, זיהוי', en: 'Rescue & Recovery', ru: 'Поиск и спасение' },
     category: Category.EMERGENCY,
     colorClass: 'stone',
-    iconName: 'Stethoscope'
+    iconName: 'Stethoscope',
+    keywords: ['body', 'dead', 'גופה', 'הרוג', 'тело', 'погибший']
   },
   {
     id: '1221',
@@ -229,7 +250,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'רשת מתנדבים להצלת חיים', en: 'Emergency Volunteer Network', ru: 'Волонтерская скорая помощь' },
     category: Category.EMERGENCY,
     colorClass: 'orange',
-    iconName: 'Activity'
+    iconName: 'Activity',
+    keywords: ['volunteer', 'first aid', 'מתנדב', 'עזרה ראשונה', 'волонтер', 'первая помощь']
   },
   {
     id: '1201',
@@ -238,7 +260,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'עזרה ראשונה נפשית', en: 'Mental First Aid', ru: 'Психологическая помощь' },
     category: Category.WELFARE,
     colorClass: 'pink',
-    iconName: 'Ear'
+    iconName: 'Ear',
+    keywords: ['suicide', 'depression', 'lonely', 'התאבדות', 'דיכאון', 'לבד', 'суицид', 'депрессия', 'одиночество']
   },
   {
     id: '1202',
@@ -247,7 +270,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מרכז סיוע לנשים', en: 'Assistance Center for Women', ru: 'Центр помощи женщинам' },
     category: Category.WELFARE,
     colorClass: 'rose',
-    iconName: 'Heart'
+    iconName: 'Heart',
+    keywords: ['rape', 'abuse', 'women', 'אונס', 'פגיעה', 'נשים', 'изнасилование', 'женщины']
   },
   {
     id: '1203',
@@ -256,7 +280,8 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'מרכז סיוע לגברים', en: 'Assistance Center for Men', ru: 'Центр помощи мужчинам' },
     category: Category.WELFARE,
     colorClass: 'sky',
-    iconName: 'Heart'
+    iconName: 'Heart',
+    keywords: ['rape', 'abuse', 'men', 'אונס', 'פגיעה', 'גברים', 'изнасилование', 'мужчины']
   },
   {
     id: '1299',
@@ -265,6 +290,7 @@ export const EMERGENCY_CONTACTS: EmergencyContact[] = [
     description: { he: 'שירותי משרדי הממשלה', en: 'Government Services', ru: 'Государственные услуги' },
     category: Category.GOVERNMENT,
     colorClass: 'blue',
-    iconName: 'Landmark'
+    iconName: 'Landmark',
+    keywords: ['ministry', 'office', 'משרד', 'gov', 'правительство']
   }
 ];

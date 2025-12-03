@@ -17,6 +17,7 @@ export interface EmergencyContact {
   category: Category;
   colorClass: string; // Tailwind color class prefix (e.g., 'red', 'blue')
   iconName: string;
+  keywords?: string[]; // Search keywords/tags
 }
 
 export interface TranslationResource {

@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { EMERGENCY_CONTACTS, CATEGORY_TRANSLATIONS, UI_TRANSLATIONS } from './constants';
 import { EmergencyCard } from './components/EmergencyCard';
-import { Search, Phone, Info, Moon, Sun, Globe } from 'lucide-react';
+import { Search, Phone, Info, Moon, Sun, Globe, Mail } from 'lucide-react';
 import { Category, Language } from './types';
 
 export default function App() {
@@ -20,9 +20,11 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('app_theme');
-      return saved === 'dark';
+      if (saved) return saved === 'dark';
+      // Default to true (dark mode) if no preference saved
+      return true;
     }
-    return false;
+    return true;
   });
 
   // Effects for DOM updates
@@ -48,14 +50,22 @@ export default function App() {
   const categories = Object.values(Category);
 
   const filteredContacts = useMemo(() => {
-    const lowerSearch = searchTerm.toLowerCase();
+    const lowerSearch = searchTerm.toLowerCase().trim();
+    if (!lowerSearch && selectedCategory === 'ALL') return EMERGENCY_CONTACTS;
+
     return EMERGENCY_CONTACTS.filter(contact => {
-      // Search in all languages for the contact
+      // Search in name, description, number, and keywords
       const nameMatch = Object.values(contact.name).some(n => n.toLowerCase().includes(lowerSearch));
       const descMatch = Object.values(contact.description).some(d => d.toLowerCase().includes(lowerSearch));
       const numberMatch = contact.number.includes(lowerSearch);
+      const keywordMatch = contact.keywords?.some(k => k.toLowerCase().includes(lowerSearch));
       
-      const matchesSearch = nameMatch || descMatch || numberMatch;
+      // Search in Category name (sub-category search)
+      const categoryNameMatch = Object.values(CATEGORY_TRANSLATIONS[contact.category]).some(
+        catName => catName.toLowerCase().includes(lowerSearch)
+      );
+      
+      const matchesSearch = !lowerSearch || nameMatch || descMatch || numberMatch || keywordMatch || categoryNameMatch;
       const matchesCategory = selectedCategory === 'ALL' || contact.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
@@ -182,7 +192,14 @@ export default function App() {
       
       {/* Footer */}
       <footer className="mt-12 text-center text-gray-400 dark:text-gray-500 text-sm pb-8 px-4">
-        <p>{UI_TRANSLATIONS.disclaimer[language]}</p>
+        <p className="mb-2">{UI_TRANSLATIONS.disclaimer[language]}</p>
+        <a 
+          href="mailto:gold.noam@gmail.com" 
+          className="inline-flex items-center gap-1.5 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        >
+          <Mail size={14} />
+          {UI_TRANSLATIONS.sendFeedback[language]}
+        </a>
       </footer>
     </div>
   );

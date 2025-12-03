@@ -151,7 +151,7 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
         
         <div className="relative">
           <div 
-            className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold rounded-lg shadow-xl whitespace-nowrap z-20 pointer-events-none transition-all duration-300 ease-out origin-bottom ${showTooltip ? 'opacity-100 transform translate-y-0 scale-100' : 'opacity-0 transform translate-y-2 scale-95'}`}
+            className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold rounded-lg shadow-xl whitespace-nowrap z-20 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom ${showTooltip ? 'opacity-100 transform translate-y-0 scale-100' : 'opacity-0 transform translate-y-2 scale-95'}`}
           >
             {UI_TRANSLATIONS.numberCopied[language]}
             <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
