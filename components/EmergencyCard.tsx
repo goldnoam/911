@@ -66,6 +66,13 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
     }, 2000);
   };
 
+  const handleNumberClick = () => {
+    const text = UI_TRANSLATIONS.dialConfirm[language];
+    if (window.confirm(`${text} ${contact.number}?`)) {
+      window.location.href = `tel:${contact.number}`;
+    }
+  };
+
   // Determine colors based on the colorClass prop with Dark Mode support
   const getColors = (color: string) => {
     switch (color) {
@@ -119,7 +126,14 @@ export const EmergencyCard: React.FC<EmergencyCardProps> = ({ contact, language 
              </div>
              <h3 className="text-xl font-bold">{name}</h3>
           </div>
-          <span className="text-2xl font-black tracking-widest text-right" dir="ltr">{contact.number}</span>
+          <button 
+             onClick={handleNumberClick}
+             className="text-2xl font-black tracking-widest text-right hover:opacity-75 transition-opacity underline decoration-dotted decoration-2 underline-offset-4 cursor-pointer"
+             dir="ltr"
+             title={`${UI_TRANSLATIONS.callNow[language]} ${contact.number}`}
+          >
+             {contact.number}
+          </button>
         </div>
         <p className="text-sm opacity-90 font-medium mb-4 pr-1 leading-tight">
           {description}

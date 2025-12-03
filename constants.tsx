@@ -55,6 +55,16 @@ export const UI_TRANSLATIONS: TranslationResource = {
     he: 'הכל',
     en: 'All',
     ru: 'Все'
+  },
+  dialConfirm: {
+    he: 'האם לחייג למספר',
+    en: 'Dial',
+    ru: 'Позвонить на номер'
+  },
+  callConfirmation: {
+    he: 'האם לחייג למספר',
+    en: 'Call number',
+    ru: 'Вызвать номер'
   }
 };
 
