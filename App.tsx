@@ -195,11 +195,20 @@ export default function App() {
         <p className="mb-2">{UI_TRANSLATIONS.disclaimer[language]}</p>
         <a 
           href="mailto:gold.noam@gmail.com" 
-          className="inline-flex items-center gap-1.5 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+          className="inline-flex items-center gap-1.5 hover:text-gray-600 dark:hover:text-gray-300 transition-colors mb-6"
         >
           <Mail size={14} />
           {UI_TRANSLATIONS.sendFeedback[language]}
         </a>
+        
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-6 mt-2">
+          <p className="mb-2 text-xs italic" dir="rtl">
+            "; וכל המקיים נפש אחת, מעלים עליו כאילו קיים עולם מלא." במשנה, במסכת סנהדרין, פרק ד', משנה ה'.
+          </p>
+          <p className="text-xs font-medium opacity-80">
+            (C) Noam Gold AI 2025
+          </p>
+        </div>
       </footer>
     </div>
   );
